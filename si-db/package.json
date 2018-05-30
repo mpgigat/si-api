@@ -1,0 +1,19 @@
+{
+  "name": "si-db",
+  "version": "1.0.0",
+  "description": "database module of the subasta inversa application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mpgigat/si-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mpgigat/si-app/issues"
+  },
+  "homepage": "https://github.com/mpgigat/si-app#readme"
+}

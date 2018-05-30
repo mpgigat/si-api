@@ -1,0 +1,19 @@
+{
+  "name": "si-api",
+  "version": "1.0.0",
+  "description": "the graphql api of the subasta inversa project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mpgigat/si-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mpgigat/si-api/issues"
+  },
+  "homepage": "https://github.com/mpgigat/si-api#readme"
+}
