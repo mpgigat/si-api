@@ -1,9 +1,9 @@
 'use strict'
 
-import dbConnection from './database-connection'
-import defaults from 'defaults'
+const dbConnection = require('./database-connection')
+const defaults = require('defaults')
 
-export default async function (config) {
+module.exports = async function (config) {
   // configuracion por defecto
   config = defaults(config, {
     host: 'localhost',

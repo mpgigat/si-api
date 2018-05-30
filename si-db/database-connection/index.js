@@ -1,12 +1,12 @@
 'use strict'
 
-import mongoose from 'mongoose'
+const mongoose = require('mongoose')
 
 mongoose.Promise = global.Promise
 
 let db
 
-export default function (config) {
+module.exports = function (config) {
     if(!db) {
         db = mongoose.createConnection(config.uri, config.options)
     }
