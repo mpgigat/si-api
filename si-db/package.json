@@ -4,7 +4,7 @@
   "description": "database module of the subasta inversa application",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "standart"
   },
   "repository": {
     "type": "git",
