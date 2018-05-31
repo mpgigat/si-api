@@ -4,7 +4,10 @@
   "description": "the graphql api of the subasta inversa project",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    "lint": "standard",
+    "prestart-dev": "npm run lint -- --fix",
+    "start-dev": "cross-env DEBUG=Subasta:* nodemon server.js",
+    "start": "cross-env NODE_ENV=production node server.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +23,7 @@
     "apollo-server-express": "^1.3.6",
     "body-parser": "^1.18.3",
     "chalk": "^2.4.1",
+    "debug": "^3.1.0",
     "express": "^4.16.3",
     "express-asyncify": "^1.0.0",
     "express-graphql": "^0.6.12",
@@ -28,6 +32,7 @@
     "uuid": "^3.2.1"
   },
   "devDependencies": {
+    "cross-env": "^5.1.6",
     "nodemon": "^1.17.5",
     "standard": "^11.0.1"
   }

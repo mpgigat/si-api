@@ -25,7 +25,7 @@ app.use('/graphql', graphqlOptionsMethod, graphqlExpress({
 
 app.use('/graphiql', graphiqlExpress({endpointURL: '/graphql'}))
 
-function graphqlOptionsMethod(req, res, next) {
+function graphqlOptionsMethod (req, res, next) {
   if (req.method === 'OPTIONS') {
     return res.sendStatus(200)
   }
@@ -48,4 +48,3 @@ app.use((err, req, res, next) => {
 server.listen(port, () => {
   console.log(`${chalk.blue('[SI:API]:')} server is running at: ${chalk.blue('http://localhost:' + port)}`)
 })
-

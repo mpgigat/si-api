@@ -1,8 +1,8 @@
 'use strict'
 
 const { makeExecutableSchema } = require('graphql-tools')
-const config = require('./../config')
-const db = require('./../../si-db')
+// const config = require('./../config')
+// const db = require('./../../si-db')
 
 const schema = `
   type Query {
