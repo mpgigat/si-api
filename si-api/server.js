@@ -46,5 +46,5 @@ app.use((err, req, res, next) => {
 })
 
 server.listen(port, () => {
-  console.log(`${chalk.blue('[SI:API]:')} server is running at: ${chalk.blue('http://localhost:' + port)}`)
+  console.log(`${chalk.blue('[SI:API]:')} server is running at: ${chalk.blue('http://localhost:' + port + '/graphql')}`)
 })
