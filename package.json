@@ -4,7 +4,7 @@
   "description": "API REST aplicacion subasta inversa",
   "main": "index.js",
   "scripts": {
-    "start": "node ./si-api/server.js"
+    "start": "cd si-db && npm i && cd ../si-api && npm i && node server.js"
   },
   "repository": {
     "type": "git",
