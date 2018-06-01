@@ -10,8 +10,8 @@ const schema = `
         username: String!
         password: String!
         city: String!
-        phone: Int!
-        document: Int!
+        phone: String!
+        document: String!
         name: String!
     }
     input newUser {
@@ -19,8 +19,8 @@ const schema = `
         username: String!
         password: String!
         city: String!
-        phone: Int!
-        document: Int!
+        phone: String!
+        document: String!
         name: String!
     }
 
@@ -29,7 +29,12 @@ const register = async (_, { user }) => {
   const database = await db(config.db)
   return database.user.register(user)
 }
+const login = async (_, { email, password }) => {
+  const { user } = await db(config.db)
+  return user.singin(email, password)
+}
 module.exports = {
   schema,
-  register
+  register,
+  login
 }

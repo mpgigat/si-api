@@ -56,12 +56,28 @@ async function register(user) {
     return userCreated
 }
 
+async function singin(userEmail, userPassword) {
+  
+  let dataFail = 'datos incorrectos'
+  const result = await userModel.findOne({email: userEmail})
+  
+  if (!result) {
+    throw new Error('No se encuentra ningún usuario registrado con este email')
+  }
+  const user = result.toJSON()
+  if (!(passwordCrypt.compareHash(userPassword, user.password))) {
+    throw new Error('Los datos de ingreso no coinciden')
+  }
+  return user
+}
+
 module.exports = function(db) {
     userModel = db.model('user', userSchema)
 
     const userMethos = {}
 
     userMethos.register = register
+    userMethos.singin = singin
 
     return userMethos
 }

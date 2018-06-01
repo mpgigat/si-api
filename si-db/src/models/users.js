@@ -25,10 +25,10 @@ const userSchema = new Schema ({
         require: true
     },
     phone: {
-        type: Number,
+        type: String,
         require: true
     },
-    document: Number,
+    document: String,
     name: {
         type: String,
         require: true
