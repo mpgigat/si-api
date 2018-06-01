@@ -1,0 +1,19 @@
+{
+  "name": "si-api",
+  "version": "1.0.0",
+  "description": "API REST aplicacion subasta inversa",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./si-api/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mpgigat/si-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mpgigat/si-api/issues"
+  },
+  "homepage": "https://github.com/mpgigat/si-api#readme"
+}
