@@ -12,7 +12,7 @@ const userSchema = new Schema ({
         require: true,
         unique: true
     },
-    userName: {
+    username: {
         type: String,
         require: true,
     },
