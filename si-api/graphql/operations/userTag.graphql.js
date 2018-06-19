@@ -2,6 +2,7 @@
 
 const db = require('../../../si-db')
 const config = require('../../config')
+const { verify } = require('../../auth')
 
 const schema = `
     type UserTag {
@@ -15,7 +16,8 @@ const schema = `
     }
 
 `
-const register = async (_, { userTag }) => {
+const register = async (_, { userTag }, context) => {
+  let token = verify(context.authorization, config.secret)
   const database = await db(config.db)
   return database.userTag.register(userTag)
 }

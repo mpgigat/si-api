@@ -19,8 +19,8 @@ app.use((req, res, next) => {
   return next()
 })
 
-app.use('/graphql', graphqlOptionsMethod, graphqlExpress({
-  schema
+app.use('/graphql', graphqlOptionsMethod, graphqlExpress(req => {
+  return {schema, context: req.headers}
 }))
 
 app.use('/graphiql', graphiqlExpress({endpointURL: '/graphql'}))

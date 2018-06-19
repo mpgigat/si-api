@@ -19,7 +19,7 @@ const schema = `
     }
 
 `
-const register = async (_, { userArticle }) => {
+const register = async (_, { userArticle }, context) => {
   const database = await db(config.db)
   return database.userArticle.register(userArticle)
 }

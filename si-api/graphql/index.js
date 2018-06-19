@@ -16,10 +16,11 @@ const schema = `
   ${bidGraphql.schema}
 
   type Query {
-    singin(email: String!, password: String!): User
+    user: [User]
   }
 
   type Mutation {
+    singin(email: String!, password: String!): User
     createUser(user: newUser!): User
     createUserArticle(userArticle: newUserArticle!): UserArticle
     createUserTag(userTag: newUserTag!): UserTag
@@ -29,15 +30,15 @@ const schema = `
 `
 const resolver = {
   Query: {
-    singin: userGraphql.login
-    
+
   },
   Mutation: {
+    singin: userGraphql.login,
     createUser: userGraphql.register,
     createUserArticle: userArticleGraphql.register,
     createUserTag: userTasgGraphql.register,
     createSale: saleGraphql.register,
-    createBid: bidGraphql.register,
+    createBid: bidGraphql.register
   }
 }
 
