@@ -11,6 +11,9 @@ const bindSchema = new Schema({
         type: String,
         require: true
     },
+    sale: {
+        type: Schema.Types.ObjectId, ref: 'sale'
+    },
     values: {
         type: [],
         require: true

@@ -18,8 +18,10 @@ const schema = `
 `
 const register = async (_, { userTag }, context) => {
   let token = verify(context.authorization, config.secret)
-  const database = await db(config.db)
-  return database.userTag.register(userTag)
+  if (token) {
+    const database = await db(config.db)
+    return database.userTag.register(userTag)
+  }
 }
 module.exports = {
   schema,

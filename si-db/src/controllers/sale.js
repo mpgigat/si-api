@@ -32,10 +32,7 @@ async function register (sale) {
 }
 module.exports = function(db) {
     saleModel = db.model('sale', saleSchema)
-
     const saleMethos = {}
-
     saleMethos.register = register
-
     return saleMethos
 }

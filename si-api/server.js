@@ -10,6 +10,7 @@ const schema = require('./graphql')
 const port = process.env.PORT || 3300
 const app = asyncify(express())
 const server = http.createServer(app)
+const { token } = require('./config')
 
 app.use(bodyParser.json())
 app.use((req, res, next) => {
@@ -20,6 +21,7 @@ app.use((req, res, next) => {
 })
 
 app.use('/graphql', graphqlOptionsMethod, graphqlExpress(req => {
+  req.headers.authorization = req.headers.authorization || token
   return {schema, context: req.headers}
 }))
 
