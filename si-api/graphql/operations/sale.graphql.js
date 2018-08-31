@@ -41,8 +41,14 @@ const getAll = async () => {
   const database = await db(config.db)
   return database.sale.getAll()
 }
+const findOne = async (_, {uuid}) => {
+    const database = await db(config.db)
+    return database.sale.findOne(uuid)
+}
+
 module.exports = {
   schema,
   register,
-  getAll
+  getAll,
+  findOne
 }

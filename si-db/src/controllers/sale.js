@@ -32,14 +32,21 @@ async function register (sale) {
 }
 async function getAll () {
     const sales = await saleModel.find({})
-    console.log(sales)
     return sales
+}
+async function findOne(uuid) {
+    const sale = await saleModel.findOne({
+        uuid
+    })
+    if (sale) return sale
+    throw new Error ('The sale with that uuid is not registered')
 }
 module.exports = function(db) {
     saleModel = db.model('sale', saleSchema)
     const saleMethods = {
         register,
-        getAll
+        getAll,
+        findOne
     }
     return saleMethods
 }
