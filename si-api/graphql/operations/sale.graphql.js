@@ -46,9 +46,15 @@ const findOne = async (_, {uuid}) => {
     return database.sale.findOne(uuid)
 }
 
+const getSalesOfCategory = async(_, {category_uuid}) => {
+    const database = await db(config.db)
+    return database.sale.getSalesOfCategory(category_uuid)
+}
+
 module.exports = {
   schema,
   register,
   getAll,
-  findOne
+  findOne,
+  getSalesOfCategory
 }

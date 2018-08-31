@@ -41,12 +41,19 @@ async function findOne(uuid) {
     if (sale) return sale
     throw new Error ('The sale with that uuid is not registered')
 }
+async function getSalesOfCategory (categoryUuid) {
+    const sales = await saleModel.find({
+        uuid_subcategority: categoryUuid
+    })
+    return sales
+}
 module.exports = function(db) {
     saleModel = db.model('sale', saleSchema)
     const saleMethods = {
         register,
         getAll,
-        findOne
+        findOne,
+        getSalesOfCategory
     }
     return saleMethods
 }
