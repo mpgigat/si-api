@@ -17,6 +17,7 @@ const schema = `
 
   type Query {
     user: [User]
+    sales: [Sale]
   }
 
   type Mutation {
@@ -30,7 +31,7 @@ const schema = `
 `
 const resolver = {
   Query: {
-
+    sales: saleGraphql.getAll
   },
   Mutation: {
     singin: userGraphql.login,

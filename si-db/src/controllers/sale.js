@@ -30,9 +30,16 @@ async function register (sale) {
 
     return saleCreated
 }
+async function getAll () {
+    const sales = await saleModel.find({})
+    console.log(sales)
+    return sales
+}
 module.exports = function(db) {
     saleModel = db.model('sale', saleSchema)
-    const saleMethos = {}
-    saleMethos.register = register
-    return saleMethos
+    const saleMethods = {
+        register,
+        getAll
+    }
+    return saleMethods
 }

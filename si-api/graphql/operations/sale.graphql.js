@@ -37,7 +37,12 @@ const register = async (_, { sale }) => {
   const database = await db(config.db)
   return database.sale.register(sale)
 }
+const getAll = async () => {
+  const database = await db(config.db)
+  return database.sale.getAll()
+}
 module.exports = {
   schema,
-  register
+  register,
+  getAll
 }
