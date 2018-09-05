@@ -4,6 +4,8 @@ const bodyParser = require('body-parser')
 const http = require('http')
 const express = require('express')
 const asyncify = require('express-asyncify')
+const fileUpload = require('express-fileupload')
+const upload = require('./upload')
 const chalk = require('chalk')
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express')
 const schema = require('./graphql')
@@ -27,6 +29,7 @@ app.use('/graphql', graphqlOptionsMethod, graphqlExpress(req => {
 
 app.use('/graphiql', graphiqlExpress({endpointURL: '/graphql'}))
 
+app.post('/upload', upload)
 function graphqlOptionsMethod (req, res, next) {
   if (req.method === 'OPTIONS') {
     return res.sendStatus(200)

@@ -23,9 +23,9 @@ const register = async (_, { bid }) => {
   return database.bid.register(bid)
 }
 
-const getBidsOfSale = async(_, {sale_uuid}) => {
+const getBidsOfSale = async (_, { saleUuid }) => {
   const database = await db(config.db)
-  return database.bid.getBidsOfSale(sale_uuid)
+  return database.bid.getBidsOfSale(saleUuid)
 }
 
 module.exports = {

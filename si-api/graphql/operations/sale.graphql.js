@@ -37,21 +37,21 @@ const register = async (_, { sale }) => {
   const database = await db(config.db)
   return database.sale.register(sale)
 }
-const getSale = async (_, {}) => {
-    
-}
+// const getSale = async (_, {}) => {
+
+// }
 const getAll = async () => {
   const database = await db(config.db)
   return database.sale.getAll()
 }
 const findOne = async (_, {uuid}) => {
-    const database = await db(config.db)
-    return database.sale.findOne(uuid)
+  const database = await db(config.db)
+  return database.sale.findOne(uuid)
 }
 
-const getSalesOfCategory = async(_, {category_uuid}) => {
-    const database = await db(config.db)
-    return database.sale.getSalesOfCategory(category_uuid)
+const getSalesOfCategory = async (_, {categoryUuid}) => {
+  const database = await db(config.db)
+  return database.sale.getSalesOfCategory(categoryUuid)
 }
 
 module.exports = {

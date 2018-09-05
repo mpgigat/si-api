@@ -19,8 +19,8 @@ const schema = `
     user: [User]
     sales: [Sale]
     findOneSale(uuid: String!): Sale
-    getBidsOfSale(sale_uuid: String!): [Bid]
-    getSalesOfCategory(category_uuid: String!): [Sale]
+    getBidsOfSale(saleUuid: String!): [Bid]
+    getSalesOfCategory(categoryUuid: String!): [Sale]
   }
 
   type Mutation {
