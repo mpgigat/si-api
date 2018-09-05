@@ -42,8 +42,7 @@ btn.addEventListener('click', () => {
     `}
     const body = JSON.stringify(bodyObj)
     console.log(imagenes)
-    fetch('http://localhost:3300/graphql',{
-        mode: 'no-cors',
+    fetch('http://localhost:3300/upload',{
         method: 'POST',
         body,
         headers: {
