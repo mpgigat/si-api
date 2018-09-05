@@ -14,6 +14,7 @@ function previewFile() {
         preview.src = ""
     }
 }
+
 btn.addEventListener('click', () => {
     const bodyObj = {query: `
     mutation {
