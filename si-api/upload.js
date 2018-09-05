@@ -3,27 +3,28 @@ const path = require('path')
 const fs = require('fs')
 
 const get = str => str.split(/image/)[1].split(/;/)[0].replace('/', '.')
-
+let name, port, domain
 function upload (req, res) {
-    const { imagenes } = req.body
-    console.log(req)
-    const name = v4()
-    const image = base64.split(';base64,').pop()
-    const extencion = get(imagenes)
-    fs.writeFile(path.join(__dirname, '../', 'uploads', `${name}${extencion}`),
-  image,
-  { encoding: 'base64' },
-  (err) => {
-    if (err) {
-      return res.status(500).send({
-        error: err.message
+  generatePath('xx')
+  const { imagenes } = req.body
+  console.log(req)
+  const image = ''
+  // const image = base64.split(';base64,').pop()
+  const extencion = get(imagenes)
+  fs.writeFile(path.join(__dirname, '../', 'uploads', `${name}${extencion}`),
+    image,
+    { encoding: 'base64' },
+    (err) => {
+      if (err) {
+        return res.status(500).send({
+          error: err.message
+        })
+      }
+      res.send({
+        name: `${domain}:${port}/uploads/${name}${extencion}`
       })
     }
-    res.send({
-      name: `${domain}:${port}/uploads/${name}${extencion}`
-    })
-  }
-)
+  )
 }
 
 function generatePath (user) {
