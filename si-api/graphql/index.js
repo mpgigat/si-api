@@ -17,6 +17,10 @@ const schema = `
 
   type Query {
     user: [User]
+    sales: [Sale]
+    findOneSale(uuid: String!): Sale
+    getBidsOfSale(sale_uuid: String!): [Bid]
+    getSalesOfCategory(category_uuid: String!): [Sale]
   }
 
   type Mutation {
@@ -30,7 +34,10 @@ const schema = `
 `
 const resolver = {
   Query: {
-
+    sales: saleGraphql.getAll,
+    findOneSale: saleGraphql.findOne,
+    getBidsOfSale: bidGraphql.getBidsOfSale,
+    getSalesOfCategory: saleGraphql.getSalesOfCategory
   },
   Mutation: {
     singin: userGraphql.login,

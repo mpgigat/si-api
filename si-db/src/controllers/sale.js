@@ -30,9 +30,30 @@ async function register (sale) {
 
     return saleCreated
 }
+async function getAll () {
+    const sales = await saleModel.find({})
+    return sales
+}
+async function findOne(uuid) {
+    const sale = await saleModel.findOne({
+        uuid
+    })
+    if (sale) return sale
+    throw new Error ('The sale with that uuid is not registered')
+}
+async function getSalesOfCategory (categoryUuid) {
+    const sales = await saleModel.find({
+        uuid_subcategority: categoryUuid
+    })
+    return sales
+}
 module.exports = function(db) {
     saleModel = db.model('sale', saleSchema)
-    const saleMethos = {}
-    saleMethos.register = register
-    return saleMethos
+    const saleMethods = {
+        register,
+        getAll,
+        findOne,
+        getSalesOfCategory
+    }
+    return saleMethods
 }

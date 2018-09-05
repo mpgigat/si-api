@@ -40,7 +40,24 @@ const register = async (_, { sale }) => {
 const getSale = async (_, {}) => {
     
 }
+const getAll = async () => {
+  const database = await db(config.db)
+  return database.sale.getAll()
+}
+const findOne = async (_, {uuid}) => {
+    const database = await db(config.db)
+    return database.sale.findOne(uuid)
+}
+
+const getSalesOfCategory = async(_, {category_uuid}) => {
+    const database = await db(config.db)
+    return database.sale.getSalesOfCategory(category_uuid)
+}
+
 module.exports = {
   schema,
-  register
+  register,
+  getAll,
+  findOne,
+  getSalesOfCategory
 }

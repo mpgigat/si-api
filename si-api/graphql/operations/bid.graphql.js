@@ -17,11 +17,19 @@ const schema = `
     }
 
 `
+
 const register = async (_, { bid }) => {
   const database = await db(config.db)
   return database.bid.register(bid)
 }
+
+const getBidsOfSale = async(_, {sale_uuid}) => {
+  const database = await db(config.db)
+  return database.bid.getBidsOfSale(sale_uuid)
+}
+
 module.exports = {
   schema,
-  register
+  register,
+  getBidsOfSale
 }

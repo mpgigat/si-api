@@ -28,12 +28,18 @@ async function register(bid) {
     return bidCreated
 }
 
+async function getBidsOfSale (uuid_sale) {
+    let bids = await bidModel.find({uuid_sale})
+    return bids
+}
+
 module.exports = function(db) {
     bidModel = db.model('bid', bidSchema)
 
-    const bidMethos = {}
+    const bidMethods = {
+        getBidsOfSale,
+        register
+    }
 
-    bidMethos.register = register
-
-    return bidMethos
+    return bidMethods
 }
