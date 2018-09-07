@@ -28,5 +28,5 @@ btn.addEventListener('click', () => {
             'Content-Type': 'application/json',
             'Accept':'application/json'
         }
-    }).then(res => res.json())
+    }).then(res => res.json()).then(console.log)
 })
