@@ -7,7 +7,7 @@ let name, port, domain
 function upload (req, res) {
   generatePath('xx')
   const { imagenes } = req.body
-  console.log(req)
+  console.log(imagenes)
   const image = ''
   // const image = base64.split(';base64,').pop()
   const extencion = get(imagenes)

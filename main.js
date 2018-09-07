@@ -7,6 +7,8 @@ function previewFile() {
     reader.onloadend = function () {
         preview.src = reader.result
         imagenes.push(reader.result)
+        imagenes.push(reader.result)
+        imagenes.push(reader.result)
     }
     if (file) {
         reader.readAsDataURL(file.files[0]);
@@ -16,30 +18,7 @@ function previewFile() {
 }
 
 btn.addEventListener('click', () => {
-    const bodyObj = {query: `
-    mutation {
-      createSale(sale: {
-        brand: "adidas"
-        uuid_subcategority: "prueba"
-        time: 1
-        uuid_user: "1"
-        photos: ""
-        description: "nada"
-        quantity: 10000
-      }) {
-        uuid
-        brand
-        uuid_subcategority
-        time
-        state
-        value_end
-        quantity
-        uuid_user
-        photos
-        description
-      }
-    }
-    `}
+    const bodyObj = {imagenes:imagenes}
     const body = JSON.stringify(bodyObj)
     console.log(imagenes)
     fetch('http://localhost:3300/upload',{
