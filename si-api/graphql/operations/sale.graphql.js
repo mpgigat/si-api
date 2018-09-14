@@ -2,6 +2,7 @@
 
 const db = require('../../../si-db')
 const config = require('../../config')
+const upload = require('../../upload')
 
 const schema = `
     type Sale {
@@ -34,6 +35,9 @@ const schema = `
 
 `
 const register = async (_, { sale }) => {
+  const photos = sale.photos
+  let photoUrls = await upload({photos})
+  sale.photos = photoUrls
   const database = await db(config.db)
   return database.sale.register(sale)
 }
