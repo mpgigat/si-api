@@ -14,7 +14,7 @@ async function upload (req, res) {
     console.log(photos)
     try {
       const urls = await generateMultipleImages(photos)
-      return urls
+      res.send({ urls })
     } catch (e) {
       throw new Error(e.message)
     }
