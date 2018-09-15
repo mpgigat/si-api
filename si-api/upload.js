@@ -9,8 +9,8 @@ const get = str => str.split(/image/)[1].split(/;/)[0].replace('/', '.')
 
 async function upload (req, res) {
   generatePath()
-  if (req.photos) {
-    const photos = req.photos
+  if (req.body.photos) {
+    const {photos} = req.body
     try {
       const urls = await generateMultipleImages(photos)
       return urls
@@ -20,7 +20,9 @@ async function upload (req, res) {
   } else {
     try {
       const { base64 } = req.body
+      console.log(req.body)
       let url = await generateImage(base64)
+      console.log(url)
       res.send({ url })
     } catch (err) {
       res.status(500).send({

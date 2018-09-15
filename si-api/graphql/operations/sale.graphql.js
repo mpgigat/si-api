@@ -35,10 +35,6 @@ const schema = `
 
 `
 const register = async (_, { sale }) => {
-  const photos = sale.photos
-  console.log(photos)
-  let photoUrls = await upload({photos})
-  sale.photos = photoUrls
   const database = await db(config.db)
   return database.sale.register(sale)
 }
