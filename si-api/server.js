@@ -15,6 +15,7 @@ const { token } = require('./config')
 const path = require('path')
 
 app.use((req, res, next) => {
+  console.log(req)
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Authorization')
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
