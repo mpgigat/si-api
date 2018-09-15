@@ -11,6 +11,7 @@ async function upload (req, res) {
   generatePath()
   if (req.body.photos) {
     const {photos} = req.body
+    console.log(photos)
     try {
       const urls = await generateMultipleImages(photos)
       return urls
