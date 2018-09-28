@@ -70,14 +70,17 @@ async function singin(userEmail, userPassword) {
   }
   return user
 }
+const getAll = () => userModel.find({})
+  
 
 module.exports = function(db) {
-    userModel = db.model('user', userSchema)
+  userModel = db.model('user', userSchema)
 
-    const userMethos = {}
+  const userMethos = {
+    register,
+    singin,
+    getAll
+  }
 
-    userMethos.register = register
-    userMethos.singin = singin
-
-    return userMethos
+  return userMethos
 }

@@ -16,7 +16,7 @@ const schema = `
   ${bidGraphql.schema}
 
   type Query {
-    user: [User]
+    users: [User]
     sales: [Sale]
     findOneSale(uuid: String!): Sale
     getBidsOfSale(saleUuid: String!): [Bid]
@@ -32,8 +32,9 @@ const schema = `
     createBid(bid: newBid!): Bid
   }
 `
-const resolver = {
+const resolvers = {
   Query: {
+    users: userGraphql.getAll,
     sales: saleGraphql.getAll,
     findOneSale: saleGraphql.findOne,
     getBidsOfSale: bidGraphql.getBidsOfSale,
@@ -51,5 +52,5 @@ const resolver = {
 
 module.exports = makeExecutableSchema({
   typeDefs: [schema],
-  resolvers: resolver
+  resolvers
 })
