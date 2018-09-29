@@ -9,16 +9,31 @@ const get = str => str.split(/image/)[1].split(/;/)[0].replace('/', '.')
 
 async function upload (req, res) {
   generatePath()
-  const { imagenes } = req.body
-  let imagenesPromises = imagenes.map(base64 => generateImage(base64))
-  try {
-    let urls = await Promise.all(imagenesPromises)
-    res.send({ urls })
-  } catch (err) {
-    res.status(500).send({
-      error: err.message
-    })
+  if (req.photos) {
+    const photos = req.photos
+    try {
+      const urls = await generateMultipleImages(photos)
+      return urls
+    } catch (e) {
+      throw new Error(e.message)
+    }
+  } else {
+    try {
+      const { base64 } = req.body
+      let url = await generateImage(base64)
+      console.log(url)
+      res.send({ url })
+    } catch (err) {
+      res.status(500).send({
+        error: err.message
+      })
+    }
   }
+}
+
+function generateMultipleImages (imagesArr) {
+  let imagenesPromises = imagesArr.map(base64 => generateImage(base64))
+  return Promise.all(imagenesPromises)
 }
 
 function generateImage (image) {
@@ -30,8 +45,8 @@ function generateImage (image) {
       image,
       { encoding: 'base64' },
       (err) => {
-        if (err) rj(err.message)
-        else rs(`${domain}:${port}/uploads/${name}${extencion}`)
+        if (err) reject(err.message)
+        else resolve(`${domain}:${port}/uploads/${name}${extencion}`)
       })
   })
 }
