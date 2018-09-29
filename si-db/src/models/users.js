@@ -3,10 +3,7 @@
 const Schema = require('mongoose').Schema
 
 const userSchema = new Schema ({
-    uuid: {
-        type: String,
-        require: true
-    },
+    _id: Schema.Types.ObjectId,
     email: {
         type: String,
         require: true,

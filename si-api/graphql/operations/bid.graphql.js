@@ -7,12 +7,12 @@ const schema = `
     type Bid {
         uuid: String!
         uuid_sale: String!
-        uuid_article: String!
+        uuid_user: String!
         values: [String]!
     }
     input newBid {
         uuid_sale: String!
-        uuid_article: String!
+        uuid_user: String!
         values: [String]!
     }
 

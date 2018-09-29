@@ -7,6 +7,8 @@ const userArticleGraphql = require('./operations/userArticle.graphql')
 const userTasgGraphql = require('./operations/userTag.graphql')
 const saleGraphql = require('./operations/sale.graphql')
 const bidGraphql = require('./operations/bid.graphql')
+const categoriryGraphql = require('./operations/category.graphql')
+const SubcategoryGraphql = require('./operations/subcategory.graphql')
 
 const schema = `
   ${userGraphql.schema}
@@ -14,11 +16,13 @@ const schema = `
   ${userTasgGraphql.schema}
   ${saleGraphql.schema}
   ${bidGraphql.schema}
+  ${categoriryGraphql.schema}
+  ${SubcategoryGraphql.schema}
 
   type Query {
     user: [User]
     sales: [Sale]
-    findOneSale(uuid: String!): Sale
+    findOneSale(_id: String!): Sale
     getBidsOfSale(saleUuid: String!): [Bid]
     getSalesOfCategory(categoryUuid: String!): [Sale]
   }
@@ -30,6 +34,9 @@ const schema = `
     createUserTag(userTag: newUserTag!): UserTag
     createSale(sale: newSale): Sale
     createBid(bid: newBid!): Bid
+    createCategority(categories: [newCategories]): [Category]
+    createSubcategority(subcategories: [newSubcategories]): [Subcategory]
+
   }
 `
 const resolver = {
@@ -45,7 +52,10 @@ const resolver = {
     createUserArticle: userArticleGraphql.register,
     createUserTag: userTasgGraphql.register,
     createSale: saleGraphql.register,
-    createBid: bidGraphql.register
+    createBid: bidGraphql.register,
+    createCategority: categoriryGraphql.register,
+    createSubcategority: SubcategoryGraphql.register
+
   }
 }
 

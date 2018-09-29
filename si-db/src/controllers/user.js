@@ -1,7 +1,7 @@
 'use strict'
 
+const mongoose = require('mongoose')
 const userSchema = require('../models/users')
-const uuid = require('uuid')
 const passwordCrypt = require('../utils/password')
 let userModel
 
@@ -30,19 +30,9 @@ async function validateEmail(user, update, uuid) {
 async function register(user) {
     await validateEmail(user, false)
 
-    user.uuid = uuid.v4()
-
-    let invalidUser = null
-    invalidUser = await userModel.findOne({ uuid: user.uuid })
-
-    while (invalidUser) {
-        invalidUser = null
-        user.uuid = uuid.v4()
-        invalidUser = await userModel.findOne({ uuid: user.uuid })
-    }
     const userToCreate = new userModel()
 
-    userToCreate.uuid = user.uuid
+    userToCreate._id = new mongoose.Types.ObjectId(),
     userToCreate.email = user.email
     userToCreate.username = user.username
     userToCreate.password = passwordCrypt.generateHash(user.password)
