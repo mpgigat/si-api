@@ -25,14 +25,14 @@ function generateImage (image) {
   const name = v4()
   const extencion = get(image)
   image = image.split(';base64,').pop()
-  return new Promise((rs, rj) => {
+  return new Promise((resolve, reject) => {
     fs.writeFile(path.join(__dirname, 'uploads', `${name}${extencion}`),
-    image,
-    { encoding: 'base64' },
-    (err) => {
-      if (err) rj(err.message)
-      else rs(`${domain}:${port}/uploads/${name}${extencion}`)
-    })
+      image,
+      { encoding: 'base64' },
+      (err) => {
+        if (err) rj(err.message)
+        else rs(`${domain}:${port}/uploads/${name}${extencion}`)
+      })
   })
 }
 

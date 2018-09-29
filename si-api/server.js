@@ -14,7 +14,6 @@ const server = http.createServer(app)
 const { token } = require('./config')
 const path = require('path')
 
-
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Authorization')
@@ -23,7 +22,6 @@ app.use((req, res, next) => {
 })
 app.use(bodyParser.json({ limit: '10mb' }))
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
-
 
 app.use('/graphql', graphqlOptionsMethod, graphqlExpress(req => {
   req.headers.authorization = req.headers.authorization || token
