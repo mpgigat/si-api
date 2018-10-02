@@ -1,28 +1,19 @@
 'use strict'
 
+const mongoose = require('mongoose')
 const saleSchema = require('../models/sales')
-const uuid = require('uuid')
 let saleModel
 
 async function register (sale) {
-    sale.uuid = uuid.v4()
-    let invalidSale= null
-    invalidSale = await saleModel.findOne({ uuid: sale.uuid })
-
-    while (invalidSale) {
-        invalidSale = null
-        userTag.uuid = uuid.v4()
-        invalidSale = await saleModel.findOne({ uuid: sale.uuid })
-    }
     const saleToCreate = new saleModel()
 
-    saleToCreate.uuid = sale.uuid
+    saleToCreate._id = new mongoose.Types.ObjectId()
     saleToCreate.brand = sale.brand
-    saleToCreate.uuid_subcategority= sale.uuid_subcategority
+    saleToCreate.subcategory = sale.subcategory
+    saleToCreate.category = sale.category
     saleToCreate.time = sale.time
-    //saleToCreate.state = sale.state
     saleToCreate.quantity = sale.quantity
-    saleToCreate.uuid_user = sale.uuid_user
+    saleToCreate.user = sale.user
     saleToCreate.photos = sale.photos
     saleToCreate.description = sale.description
 
@@ -34,16 +25,16 @@ async function getAll () {
     const sales = await saleModel.find({})
     return sales
 }
-async function findOne(uuid) {
+async function findOne(_id) {
     const sale = await saleModel.findOne({
-        uuid
+        _id
     })
     if (sale) return sale
-    throw new Error ('The sale with that uuid is not registered')
+    throw new Error ('The sale with that _id is not registered')
 }
-async function getSalesOfCategory (categoryUuid) {
+async function getSalesOfCategory (category) {
     const sales = await saleModel.find({
-        uuid_subcategority: categoryUuid
+        subcategory: category
     })
     return sales
 }

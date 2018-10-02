@@ -6,7 +6,7 @@ const { sing } = require('../../auth')
 
 const schema = `
     type User {
-        uuid: String!
+        _id: String!
         email: String!
         username: String!
         password: String!

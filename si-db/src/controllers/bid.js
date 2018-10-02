@@ -1,27 +1,21 @@
 'use strict'
 
-const bidSchema = require('../models/users')
+const mongoose = require('mongoose')
+const bidSchema = require('../models/bids')
+const userSchema = require('../models/users')
+const saleSchema = require('../models/sales')
+
 const uuid = require('uuid')
 let bidModel
 
 async function register(bid) {
-    bid.uuid = uuid.v4()
-
-    let invalidBid = null
-    invalidBid = await bidModel.findOne({ uuid: bid.uuid })
-
-    while (invalidBid) {
-        invalidBid = null
-        userTag.uuid = uuid.v4()
-        invalidBid = await bidModel.findOne({ uuid: bid.uuid })
-    }
 
     const bidToCreate = new bidModel()
 
-    bidToCreate.uuid = bid.uuid
-    bidToCreate.uuid_sale = bid.uuid_sale
+    bidToCreate._id = new mongoose.Types.ObjectId(),
+    bidToCreate.sale = bid._idSale
     bidToCreate.values = bid.values
-    bidToCreate.uuid_article = bid.uuid_article
+    bidToCreate.user = bid._idUser
 
     const bidCreated = await bidToCreate.save()
 

@@ -6,13 +6,14 @@ const upload = require('../../upload')
 
 const schema = `
     type Sale {
-        uuid: String!
+        _id: String!
         brand: String!
-        uuid_subcategority: String!
+        category: String!
+        subcategory: String!
+        user: String!
         time: Int!
         state: State
         quantity: Int!
-        uuid_user: String!
         value_end: Int
         photos: [String]
         description: String!
@@ -25,10 +26,11 @@ const schema = `
       }
     input newSale {
         brand: String!
-        uuid_subcategority: String!
+        category: String
+        subcategority: String
+        user: String!
         time: Int!
         quantity: Int!
-        uuid_user: String!
         photos: [String]
         description: String!
     }
@@ -48,9 +50,9 @@ const getAll = async () => {
   const database = await db(config.db)
   return database.sale.getAll()
 }
-const findOne = async (_, {uuid}) => {
+const findOne = async (_, {_id}) => {
   const database = await db(config.db)
-  return database.sale.findOne(uuid)
+  return database.sale.findOne(_id)
 }
 
 const getSalesOfCategory = async (_, {categoryUuid}) => {

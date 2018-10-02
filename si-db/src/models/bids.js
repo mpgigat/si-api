@@ -3,24 +3,18 @@
 const Schema = require('mongoose').Schema
 
 const bindSchema = new Schema({
-    uuid: {
-        type: String,
-        require: true
-    },
-    uuid_sale: {
-        type: String,
-        require: true
-    },
+    _id: Schema.Types.ObjectId,
     sale: {
-        type: Schema.Types.ObjectId, ref: 'sale'
+        type: Schema.Types.ObjectId,
+        ref: 'sale'
     },
     values: {
         type: [],
         require: true
     },
-    uuid_article: {
-        type: String,
-        require: true
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'user'
     }
 })
 

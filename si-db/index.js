@@ -8,6 +8,8 @@ const userArticle = require('./src/controllers/UserArticle')
 const userTag = require('./src/controllers/userTag')
 const sale = require('./src/controllers/sale')
 const bid = require('./src/controllers/bid')
+const category = require('./src/controllers/category')
+const subcategory = require('./src/controllers/subcategory')
 
 module.exports = async function (config) {
   // configuracion por defecto
@@ -38,7 +40,9 @@ module.exports = async function (config) {
     userArticle: userArticle(db),
     userTag: userTag(db),
     sale: sale(db),
-    bid: bid(db)
+    bid: bid(db),
+    category: category(db),
+    subcategory: subcategory(db)
 
   }
 }

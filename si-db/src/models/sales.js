@@ -3,17 +3,22 @@
 const Schema = require('mongoose').Schema
 
 const saleSchema = new Schema({
-    uuid: {
-        type: String,
-        require: true
-    },
+    _id: Schema.Types.ObjectId,
     brand: {
         type: String,
         require: true
     },
-    uuid_subcategority:{
-        type: String,
-        require: true
+    category:{
+        type: Schema.Types.ObjectId,
+        ref: 'category'
+    },
+    subcategory:{
+        type: Schema.Types.ObjectId,
+        ref: 'subcategory'
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'user'
     },
     time: {
         type: Number,
@@ -28,10 +33,6 @@ const saleSchema = new Schema({
     quantity: {
         type: Number,
         require: true,
-    },
-    uuid_user: {
-        type: String,
-        require: true
     },
     value_end: Number,
     photos: [],
