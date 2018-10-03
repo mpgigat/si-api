@@ -20,7 +20,11 @@ const saleSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'user'
     },
-    time: {
+    creationTime: {
+        type:Number,
+        require: true
+    },
+    endTime: {
         type: Number,
         require:true
     },

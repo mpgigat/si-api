@@ -5,13 +5,15 @@ const saleSchema = require('../models/sales')
 let saleModel
 
 async function register (sale) {
+    let createTime = new Date()
     const saleToCreate = new saleModel()
 
     saleToCreate._id = new mongoose.Types.ObjectId()
     saleToCreate.brand = sale.brand
     saleToCreate.subcategory = sale.subcategory
     saleToCreate.category = sale.category
-    saleToCreate.time = sale.time
+    saleToCreate.creationTime = createTime.getTime()
+    saleToCreate.endTime = createTime.setDate(createTime.getDate() + sale.time)
     saleToCreate.quantity = sale.quantity
     saleToCreate.user = sale.user
     saleToCreate.photos = sale.photos

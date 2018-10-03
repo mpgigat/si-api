@@ -12,7 +12,8 @@ const schema = `
         category: String!
         subcategory: String!
         user: String!
-        time: Int!
+        creationTime: Float!
+        endTime: Float!
         state: State
         quantity: Int!
         value_end: Int
@@ -38,9 +39,9 @@ const schema = `
 
 `
 const register = async (_, { sale }) => {
-  const photos = sale.photos
-  let photoUrls = await upload({photos})
-  sale.photos = photoUrls
+  // const photos = sale.photos
+  // let photoUrls = await upload({photos})
+  // sale.photos = photoUrls
   const database = await db(config.db)
   return database.sale.register(sale)
 }
