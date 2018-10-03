@@ -13,17 +13,17 @@ async function register(bid) {
     const bidToCreate = new bidModel()
 
     bidToCreate._id = new mongoose.Types.ObjectId(),
-    bidToCreate.sale = bid._idSale
+    bidToCreate.sale = bid.sale
     bidToCreate.values = bid.values
-    bidToCreate.user = bid._idUser
-
+    bidToCreate.user = bid.user
     const bidCreated = await bidToCreate.save()
 
     return bidCreated
 }
 
-async function getBidsOfSale (uuid_sale) {
-    let bids = await bidModel.find({uuid_sale})
+async function getBidsOfSale (sale) {
+    console.log(sale)
+    let bids = await bidModel.find({sale})
     return bids
 }
 

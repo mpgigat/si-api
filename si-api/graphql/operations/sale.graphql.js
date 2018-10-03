@@ -3,6 +3,7 @@
 const db = require('../../../si-db')
 const config = require('../../config')
 const upload = require('../../upload')
+const { verify } = require('../../auth')
 
 const schema = `
     type Sale {
@@ -11,7 +12,8 @@ const schema = `
         category: String!
         subcategory: String!
         user: String!
-        time: Int!
+        creationTime: Float!
+        endTime: Float!
         state: State
         quantity: Int!
         value_end: Int
@@ -37,9 +39,9 @@ const schema = `
 
 `
 const register = async (_, { sale }) => {
-  const photos = sale.photos
-  let photoUrls = await upload({photos})
-  sale.photos = photoUrls
+  // const photos = sale.photos
+  // let photoUrls = await upload({photos})
+  // sale.photos = photoUrls
   const database = await db(config.db)
   return database.sale.register(sale)
 }
@@ -55,10 +57,11 @@ const findOne = async (_, {_id}) => {
   return database.sale.findOne(_id)
 }
 
-const getSalesOfCategory = async (_, {categoryUuid}) => {
+const getSalesOfCategory = async (_, {category}) => {
   const database = await db(config.db)
-  return database.sale.getSalesOfCategory(categoryUuid)
+  return database.sale.getSalesOfCategory(category)
 }
+
 
 module.exports = {
   schema,

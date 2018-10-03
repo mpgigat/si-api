@@ -4,13 +4,13 @@ const Schema = require('mongoose').Schema
 
 const userTagSchema = new Schema ({
     _id: Schema.Types.ObjectId,
-    uuid_subcategority:{
-        type: String,
-        require: true
+    subcategory:{
+        type: Schema.Types.ObjectId,
+        ref: 'subcategory'
     },
-    uuid_user: {
-        type: String,
-        require: true
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'user'
     },
 })
 

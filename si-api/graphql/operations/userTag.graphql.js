@@ -6,13 +6,13 @@ const { verify } = require('../../auth')
 
 const schema = `
     type UserTag {
-        uuid: String!
-        uuid_subcategority: String!
-        uuid_user: String!
+        _id: String!
+        subcategory: String!
+        user: String!
     }
     input newUserTag {
-        uuid_subcategority: String!
-        uuid_user: String!
+        subcategory: String!
+        user: String!
     }
 
 `

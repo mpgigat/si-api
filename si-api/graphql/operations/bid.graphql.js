@@ -5,14 +5,14 @@ const config = require('../../config')
 
 const schema = `
     type Bid {
-        uuid: String!
-        uuid_sale: String!
-        uuid_user: String!
+        _id: String!
+        sale: String!
+        user: String!
         values: [String]!
     }
     input newBid {
-        uuid_sale: String!
-        uuid_user: String!
+        sale: String!
+        user: String!
         values: [String]!
     }
 
@@ -23,9 +23,9 @@ const register = async (_, { bid }) => {
   return database.bid.register(bid)
 }
 
-const getBidsOfSale = async (_, { saleUuid }) => {
+const getBidsOfSale = async (_, { sale }) => {
   const database = await db(config.db)
-  return database.bid.getBidsOfSale(saleUuid)
+  return database.bid.getBidsOfSale(sale)
 }
 
 module.exports = {
