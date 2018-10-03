@@ -15,6 +15,7 @@ const bindSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
         ref: 'user'
+
     }
 })
 

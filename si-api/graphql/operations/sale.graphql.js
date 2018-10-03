@@ -3,6 +3,7 @@
 const db = require('../../../si-db')
 const config = require('../../config')
 const upload = require('../../upload')
+const { verify } = require('../../auth')
 
 const schema = `
     type Sale {
@@ -55,10 +56,11 @@ const findOne = async (_, {_id}) => {
   return database.sale.findOne(_id)
 }
 
-const getSalesOfCategory = async (_, {categoryUuid}) => {
+const getSalesOfCategory = async (_, {category}) => {
   const database = await db(config.db)
-  return database.sale.getSalesOfCategory(categoryUuid)
+  return database.sale.getSalesOfCategory(category)
 }
+
 
 module.exports = {
   schema,

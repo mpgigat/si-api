@@ -33,11 +33,10 @@ async function findOne(_id) {
     throw new Error ('The sale with that _id is not registered')
 }
 async function getSalesOfCategory (category) {
-    const sales = await saleModel.find({
-        subcategory: category
-    })
+    const sales = await saleModel.find({ category })
     return sales
 }
+
 module.exports = function(db) {
     saleModel = db.model('sale', saleSchema)
     const saleMethods = {
