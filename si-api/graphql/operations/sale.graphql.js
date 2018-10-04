@@ -3,7 +3,7 @@
 const db = require('../../../si-db')
 const config = require('../../config')
 const upload = require('../../upload')
-const { verify } = require('../../auth')
+// const { verify } = require('../../auth')
 
 const schema = `
     type Sale {

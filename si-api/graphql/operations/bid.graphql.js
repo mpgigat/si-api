@@ -17,11 +17,11 @@ const schema = `
     input newBid {
         sale: String!
         user: String!
-        values: [String]!
+        values: Int!
     }
+    
 
 `
-
 const register = async (_, { bid }) => {
   const database = await db(config.db)
   return database.bid.register(bid)
@@ -31,9 +31,14 @@ const getBidsOfSale = async (_, { sale }) => {
   const database = await db(config.db)
   return database.bid.getBidsOfSale(sale)
 }
+const UpdateOfValue = async (_, { _id, value }) => {
+  const database = await db(config.db)
+  return database.bid.UpdateValue(_id, value)
+}
 
 module.exports = {
   schema,
   register,
-  getBidsOfSale
+  getBidsOfSale,
+  UpdateOfValue
 }

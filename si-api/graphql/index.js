@@ -29,6 +29,7 @@ const schema = `
 
   type Mutation {
     singin(email: String!, password: String!): User
+
     createUser(user: newUser!): User
     createUserArticle(userArticle: newUserArticle!): UserArticle
     createUserTag(userTag: newUserTag!): UserTag
@@ -36,6 +37,8 @@ const schema = `
     createBid(bid: newBid!): Bid
     createCategority(categories: [newCategories]): [Category]
     createSubcategority(subcategories: [newSubcategories]): [Subcategory]
+
+    updateBidValue(_id: String!, value: Int!): Bid
 
   }
 `
@@ -55,7 +58,8 @@ const resolvers = {
     createSale: saleGraphql.register,
     createBid: bidGraphql.register,
     createCategority: categoriryGraphql.register,
-    createSubcategority: SubcategoryGraphql.register
+    createSubcategority: SubcategoryGraphql.register,
+    updateBidValue: bidGraphql.UpdateOfValue
 
   }
 }

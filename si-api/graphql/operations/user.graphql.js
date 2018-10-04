@@ -2,6 +2,7 @@
 
 const db = require('../../../si-db')
 const config = require('../../config')
+const upload = require('../../upload')
 const { sing } = require('../../auth')
 
 const schema = `
@@ -15,6 +16,7 @@ const schema = `
         document: String!
         name: String!
         token: String
+        photo: String
     }
     input newUser {
         email: String!
@@ -24,6 +26,7 @@ const schema = `
         phone: String!
         document: String!
         name: String!
+        photo: String
     }
 
 `
