@@ -31,6 +31,12 @@ const register = async (_, { user }) => {
   const database = await db(config.db)
   return database.user.register(user)
 }
+
+const getAll = async () => {
+  const { user } = await db(config.db)
+  return user.getAll()
+}
+
 const login = async (_, { email, password }) => {
   const { user } = await db(config.db)
   let result = await user.singin(email, password)
@@ -60,5 +66,6 @@ const login = async (_, { email, password }) => {
 module.exports = {
   schema,
   register,
-  login
+  login,
+  getAll
 }

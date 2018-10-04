@@ -20,7 +20,7 @@ const schema = `
   ${SubcategoryGraphql.schema}
 
   type Query {
-    user: [User]
+    users: [User]
     sales: [Sale]
     findOneSale(_id: String!): Sale
     getBidsOfSale(sale: String!): [Bid]
@@ -39,8 +39,9 @@ const schema = `
 
   }
 `
-const resolver = {
+const resolvers = {
   Query: {
+    users: userGraphql.getAll,
     sales: saleGraphql.getAll,
     findOneSale: saleGraphql.findOne,
     getBidsOfSale: bidGraphql.getBidsOfSale,
@@ -61,5 +62,5 @@ const resolver = {
 
 module.exports = makeExecutableSchema({
   typeDefs: [schema],
-  resolvers: resolver
+  resolvers
 })
