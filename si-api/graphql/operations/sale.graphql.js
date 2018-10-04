@@ -62,7 +62,6 @@ const getSalesOfCategory = async (_, {category}) => {
   return database.sale.getSalesOfCategory(category)
 }
 
-
 module.exports = {
   schema,
   register,

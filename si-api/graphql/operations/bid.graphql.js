@@ -4,11 +4,15 @@ const db = require('../../../si-db')
 const config = require('../../config')
 
 const schema = `
+    type Value {
+      date: Float
+      value: Int
+    }
     type Bid {
         _id: String!
         sale: String!
         user: String!
-        values: [String]!
+        values: [Value]!
     }
     input newBid {
         sale: String!
