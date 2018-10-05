@@ -20,11 +20,16 @@ function register(categories) {
     return categoriesCreated 
 }
 
+function getAll() {
+    return categoryModel.find({}).populate('subcategories').exec()
+}
+
 module.exports = function(db) {
     categoryModel = db.model('category', categorySchema)
 
     const categoryMethods = {
-        register
+        register,
+        getAll
     }
 
     return categoryMethods

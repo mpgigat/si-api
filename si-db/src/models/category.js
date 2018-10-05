@@ -12,6 +12,11 @@ const categorySchema = new Schema({
         type: String
     }
 })
+categorySchema.virtual('subcategories', {
+    ref: 'subcategory',
+    localField: '_id',
+    foreignField: 'category'
+})
 
 
 module.exports = categorySchema

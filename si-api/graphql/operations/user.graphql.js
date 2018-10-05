@@ -2,7 +2,7 @@
 
 const db = require('../../../si-db')
 const config = require('../../config')
-const upload = require('../../upload')
+// const upload = require('../../upload')
 const { sing } = require('../../auth')
 
 const schema = `
