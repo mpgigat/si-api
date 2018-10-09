@@ -21,11 +21,10 @@ const register = async (_, { categories }, context) => {
   return database.category.register(categories)
 }
 
-const getAll = async () =>{
+const getAll = async () => {
   const database = await db(config.db)
-    let data = await database.category.getAll()    
-    console.log(data)
-    return data
+  let data = await database.category.getAll()
+  return data
 }
 
 module.exports = {

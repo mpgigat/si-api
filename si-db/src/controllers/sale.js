@@ -2,7 +2,10 @@
 
 const mongoose = require('mongoose')
 const saleSchema = require('../models/sales')
+const bidSchema = require('../models/bids')
+
 let saleModel
+let bidModel
 
 async function register (sale) {
     let createTime = new Date()
@@ -38,14 +41,24 @@ async function getSalesOfCategory (category) {
     const sales = await saleModel.find({ category })
     return sales
 }
+async function getSalesOfBidUser (user) {
+    const bids = await bidModel.find({ user }).populate('sale').exec()
+    let sales = []
+    bids.forEach(({ sale }) => {
+        sales.push(sale)
+    })
+    return sales
+}
 
 module.exports = function(db) {
     saleModel = db.model('sale', saleSchema)
+    bidModel = db.model('bid', bidSchema)
     const saleMethods = {
         register,
         getAll,
         findOne,
-        getSalesOfCategory
+        getSalesOfCategory,
+        getSalesOfBidUser
     }
     return saleMethods
 }

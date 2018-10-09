@@ -9,7 +9,7 @@ let bidModel, saleModel
 
 async function register(bid) {
     const getBid = await bidModel.find({sale: bid.sale, user: bid.user})
-    if(getBid) throw new Error('There is already a bid with this user')
+    if(getBid === []) throw new Error('There is already a bid with this user')
     const sale = await saleModel.findById(bid.sale)
     if (sale.value_end <= bid.values) throw new Error('the value is greater than the existing ones')
     let values = { date: new Date(), value: bid.values }
