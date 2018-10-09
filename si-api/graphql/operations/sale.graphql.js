@@ -10,7 +10,7 @@ const schema = `
         _id: String!
         brand: String!
         category: String!
-        subcategory: String!
+        subcategory: String
         user: String!
         creationTime: Float!
         endTime: Float!
