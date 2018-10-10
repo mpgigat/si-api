@@ -30,8 +30,8 @@ module.exports = async function (config) {
   })
   const connectConfig = {}
 
-  // connectConfig.uri = `mongodb://${config.user}:${config.password}@${config.host}:${config.port}/${config.db}`
-  connectConfig.uri = config.db.mongoUri
+  connectConfig.uri = `mongodb://${config.user}:${config.password}@${config.host}:${config.port}/${config.db}`
+  // connectConfig.uri = config.db.mongoUri
 
   connectConfig.options = config.options
 
