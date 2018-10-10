@@ -7,7 +7,7 @@
     "lint": "standard",
     "prestart-dev": "npm run lint -- --fix",
     "start-dev": "cross-env  DEBUG=Subasta:* nodemon server.js",
-    "start": "cross-env NODE_ENV=production cross-env DOMAIN=https://dashboard.heroku.com/  cross-env PORT=3000 node server.js"
+    "start": "cross-env NODE_ENV=production node server.js"
   },
   "repository": {
     "type": "git",
