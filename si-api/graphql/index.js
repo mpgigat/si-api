@@ -27,6 +27,7 @@ const schema = `
     getBidsOfSale(sale: String!): [Bid]
     getSalesOfCategory(category: String!): [Sale]
     getSalesOfBidUser(user: String!): [Sale]
+    getSaleOfUser(user: String!):[Sale]
   }
 
   type Mutation {
@@ -51,7 +52,8 @@ const resolvers = {
     getBidsOfSale: bidGraphql.getBidsOfSale,
     categories: categoriryGraphql.getAll,
     getSalesOfCategory: saleGraphql.getSalesOfCategory,
-    getSalesOfBidUser: saleGraphql.getSalesOfBidUser
+    getSalesOfBidUser: saleGraphql.getSalesOfBidUser,
+    getSaleOfUser: saleGraphql.getSaleOfUser
   },
   Mutation: {
     singin: userGraphql.login,

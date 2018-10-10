@@ -43,10 +43,16 @@ async function getSalesOfCategory (category) {
 }
 async function getSalesOfBidUser (user) {
     const bids = await bidModel.find({ user }).populate('sale').exec()
+    if (bids === []) throw new Error ('the user has not created bids')
     let sales = []
     bids.forEach(({ sale }) => {
         sales.push(sale)
     })
+    return sales
+}
+async function  getSaleOfUser (user) {
+    const sales = await saleModel.find({ user })
+    if (sales === []) throw new Error ('the user has not created sale')
     return sales
 }
 
@@ -58,7 +64,8 @@ module.exports = function(db) {
         getAll,
         findOne,
         getSalesOfCategory,
-        getSalesOfBidUser
+        getSalesOfBidUser,
+        getSaleOfUser
     }
     return saleMethods
 }

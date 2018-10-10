@@ -65,6 +65,10 @@ const getSalesOfBidUser = async (_, {user}) => {
   const database = await db(config.db)
   return database.sale.getSalesOfBidUser(user)
 }
+const getSaleOfUser = async (_, {user}) => {
+  const database = await db(config.db)
+  return database.sale.getSaleOfUser(user)
+}
 
 module.exports = {
   schema,
@@ -72,5 +76,6 @@ module.exports = {
   getAll,
   findOne,
   getSalesOfCategory,
-  getSalesOfBidUser
+  getSalesOfBidUser,
+  getSaleOfUser
 }
