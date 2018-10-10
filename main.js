@@ -9,6 +9,7 @@ function previewFile() {
         imagenes.push(reader.result)
         imagenes.push(reader.result)
         imagenes.push(reader.result)
+        console.log(imagenes)
     }
     if (file) {
         reader.readAsDataURL(file.files[0]);
@@ -30,7 +31,7 @@ btn.addEventListener('click', () => {
         }
     }).then(res => res.json()).then(console.log)
 });
- function datos(){
+ async function datos(){
     let headers = {
         headers: {
             'Accept': 'application/json',

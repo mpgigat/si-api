@@ -3,7 +3,7 @@ const path = require('path')
 const fs = require('fs')
 const { v4 } = require('uuid')
 const domain = process.env.DOMAIN || 'http://localhost'
-const port = process.env.port || '3300'
+const port = process.env.PORT || '3300'
 
 const get = str => str.split(/image/)[1].split(/;/)[0].replace('/', '.')
 
