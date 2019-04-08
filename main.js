@@ -7,8 +7,8 @@ function previewFile() {
     reader.onloadend = function () {
         preview.src = reader.result
         imagenes.push(reader.result)
-        imagenes.push(reader.result)
-        imagenes.push(reader.result)
+        // imagenes.push(reader.result)
+        // imagenes.push(reader.result)
         console.log(imagenes)
     }
     if (file) {
@@ -17,19 +17,47 @@ function previewFile() {
         preview.src = ""
     }
 }
+var config = {
+    apiKey: "AIzaSyDJSVESjGBGI7XpqTWEWA-3cA04FjqSJNk",
+    authDomain: "subasta-63c4c.firebaseapp.com",
+    databaseURL: "https://subasta-63c4c.firebaseio.com",
+    projectId: "subasta-63c4c",
+    storageBucket: "subasta-63c4c.appspot.com",
+    messagingSenderId: "29386136647"
+  }
+firebase.initializeApp(config)
+let storage = firebase.storage()
 
-btn.addEventListener('click', () => {
-    const bodyObj = {imagenes:imagenes}
-    const body = JSON.stringify(bodyObj)
-    console.log(imagenes)
-    fetch('http://localhost:3300/upload',{
-        method: 'POST',
-        body,
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept':'application/json'
-        }
-    }).then(res => res.json()).then(console.log)
+
+const get = str => str.split(/image/)[1].split(/;/)[0].replace('/', '.')
+
+
+btn.addEventListener('click', async () => {
+    const extencion = get(imagenes[0])
+    let storageRef = storage.ref(`images/prueba${extencion}`)
+    // const bodyObj = {imagenes:imagenes}
+    // const body = JSON.stringify(bodyObj)
+    // // let image = imagenes[0].split(';base64,').pop()
+    // console.log(imagenes[0])
+    const imgUpload = storageRef.putString(imagenes[0], 'data_url')
+    console.log(imgUpload)
+    imgUpload.on('state_changed', function progress (img) {
+        let progress = (img.bytesTransferred / img.totalBytes) * 100
+        console.log(progress)
+    })
+    // const url = await imgUpload.snapshot.ref.getDownloadURL()
+    // console.log(url)
+    // const data = await storageRef.getDownloadURL()
+    // console.log('imagen subida', data)
+
+    // fetch('http://localhost:3300/upload',{
+    //     method: 'POST',
+    //     body,
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //         'Accept':'application/json'
+    //     }
+    // }).then(res => res.json()).then(console.log)
 });
  async function datos(){
     let headers = {
